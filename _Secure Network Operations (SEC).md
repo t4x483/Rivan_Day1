@@ -1,5 +1,5 @@
 
-<!-- Your monitor number = #$34T# -->
+<!-- Your monitor number = 31 -->
 
 
 # 👋 Welcome to Rivan
@@ -27,8 +27,8 @@ Import the repositories.
 ~~~
 @cmd
 cd Desktop
-mkdir _name-#$34T#
-cd _name-#$34T#
+mkdir _name-31
+cd _name-31
 dir
 ~~~
 
@@ -304,7 +304,7 @@ Get-WmiObject win32_bios | select Serialnumber
 ~~~
 !@CoreTaas
 conf t
- hostname CoreTAAS-#$34T#
+ hostname CoreTAAS-31
  enable secret pass
  service password-encryption
  no logging console
@@ -325,19 +325,19 @@ conf t
   name VOICEVLAN
  int vlan 1
   no shut
-  ip add 10.#$34T#.1.2 255.255.255.0
+  ip add 10.31.1.2 255.255.255.0
   desc DEFAULT-VLAN
  int vlan 10
   no shut
-  ip add 10.#$34T#.10.2 255.255.255.0
+  ip add 10.31.10.2 255.255.255.0
   desc WIFI-VLAN
  int vlan 50
   no shut
-  ip add 10.#$34T#.50.2 255.255.255.0
+  ip add 10.31.50.2 255.255.255.0
   desc CCTV-VLAN
  int vlan 100
   no shut
-  ip add 10.#$34T#.100.2 255.255.255.0
+  ip add 10.31.100.2 255.255.255.0
   desc VOICE-VLAN
  end
 ~~~
@@ -408,7 +408,7 @@ show power inline
 ~~~
 !@CoreBABA
 conf t
- hostname coreBaba-#$34T#
+ hostname coreBaba-31
  enable secret pass
  service password-encryption
  no logging console
@@ -424,22 +424,22 @@ conf t
  int gi 0/1
   no shut
   no switchport
-  ip add 10.#$34T#.#$34T#.4 255.255.255.0
+  ip add 10.31.31.4 255.255.255.0
  int vlan 1
   no shut
-  ip add 10.#$34T#.1.4 255.255.255.0
+  ip add 10.31.1.4 255.255.255.0
   desc DEFAULT-VLAN
  int vlan 10
   no shut
-  ip add 10.#$34T#.10.4 255.255.255.0
+  ip add 10.31.10.4 255.255.255.0
   desc WIFI-VLAN
  int vlan 50
   no shut
-  ip add 10.#$34T#.50.4 255.255.255.0
+  ip add 10.31.50.4 255.255.255.0
   desc CCTV-VLAN
  int vlan 100
   no shut
-  ip add 10.#$34T#.100.4 255.255.255.0
+  ip add 10.31.100.4 255.255.255.0
   desc VOICE-VLAN
  end
 ~~~
@@ -450,7 +450,7 @@ Verify Connectivity:
 
 ~~~
 !@cmd
-ping 10.#$34T#.1.4
+ping 10.31.1.4
 ~~~
 
 <br>
@@ -488,8 +488,8 @@ cia.gov    vs    neu.edu.ph   vs   sti.edu.ph   vs   dpwh.gov.ph
 
 ~~~
 !@cmd
-ping 10.#$34T#.1.4
-ping 10.#$34T#.1.2
+ping 10.31.1.4
+ping 10.31.1.2
 ~~~
 
 <br>
@@ -505,7 +505,7 @@ nmap -O 10.28.0.0/24
 __2. Scanning - find open ports, active devices, and services. Find Vulnerabilities__
 ~~~
 !@cmd
-nmap -v 10.#$34T#.1.2
+nmap -v 10.31.1.2
 ~~~
 
 <br>
@@ -628,7 +628,7 @@ Expensive Switches have __Loop Avoidance__
 Execute a persistent ping
 ~~~
 !@cmd
-ping 10.#$34T#.1.2 -t
+ping 10.31.1.2 -t
 ~~~
 
 <br>
@@ -681,32 +681,32 @@ show int po1 | inc BW
 ~~~
 !@CoreTAAS
 conf t
- ip dhcp excluded-address 10.#$34T#.1.1 10.#$34T#.1.100
- ip dhcp excluded-address 10.#$34T#.10.1 10.#$34T#.10.100
- ip dhcp excluded-address 10.#$34T#.50.1 10.#$34T#.50.100
- ip dhcp excluded-address 10.#$34T#.100.1 10.#$34T#.100.100
+ ip dhcp excluded-address 10.31.1.1 10.31.1.100
+ ip dhcp excluded-address 10.31.10.1 10.31.10.100
+ ip dhcp excluded-address 10.31.50.1 10.31.50.100
+ ip dhcp excluded-address 10.31.100.1 10.31.100.100
  ip dhcp pool POOLDATA
-  network 10.#$34T#.1.0 255.255.255.0
-  default-router 10.#$34T#.1.4
+  network 10.31.1.0 255.255.255.0
+  default-router 10.31.1.4
   domain-name MGMTDATA.COM
-  dns-server 10.#$34T#.1.10
+  dns-server 10.31.1.10
  ip dhcp pool POOLWIFI
-  network 10.#$34T#.10.0 255.255.255.0
-  default-router 10.#$34T#.10.4
+  network 10.31.10.0 255.255.255.0
+  default-router 10.31.10.4
   domain-name WIFIDATA.COM
-  dns-server 10.#$34T#.1.10
-  option 43 ip 10.#$34T#.10.7
+  dns-server 10.31.1.10
+  option 43 ip 10.31.10.7
  ip dhcp pool POOLCCTV
-  network 10.#$34T#.50.0 255.255.255.0
-  default-router 10.#$34T#.50.4
+  network 10.31.50.0 255.255.255.0
+  default-router 10.31.50.4
   domain-name CCTVDATA.COM
-  dns-server 10.#$34T#.1.10
+  dns-server 10.31.1.10
  ip dhcp pool POOLVOICE
-  network 10.#$34T#.100.0 255.255.255.0
-  default-router 10.#$34T#.100.4
+  network 10.31.100.0 255.255.255.0
+  default-router 10.31.100.4
   domain-name VOICEDATA.COM
-  dns-server 10.#$34T#.1.10
-  option 150 ip 10.#$34T#.100.8
+  dns-server 10.31.1.10
+  option 150 ip 10.31.100.8
   end
 ~~~
 
@@ -876,10 +876,10 @@ Assign a specific IP address to a device.
 conf t
  ip routing
  ip dhcp pool CAMERA6
-  host 10.#$34T#.50.6 255.255.255.0
+  host 10.31.50.6 255.255.255.0
   client-identifier #camera6macadd#
  ip dhcp pool CAMERA8
-  host 10.#$34T#.50.8 255.255.255.0
+  host 10.31.50.8 255.255.255.0
   client-identifier #camera8macadd#
  end
 ~~~
@@ -1016,7 +1016,7 @@ show int status err-disable
 
 ~~~
 !@cmd
-ping 10.#$34T#.1.100 -t
+ping 10.31.1.100 -t
 ~~~
 
 <br>
@@ -1088,7 +1088,7 @@ conf t
 ~~~
 !@coreBaba
 conf t
- hostname coreBaba-#$34T#
+ hostname coreBaba-31
  enable secret pass
  service password-encryption
  no logging console
@@ -1104,22 +1104,22 @@ conf t
  int gi 0/1
   no shut
   no switchport
-  ip add 10.#$34T#.#$34T#.4 255.255.255.0
+  ip add 10.31.31.4 255.255.255.0
  int vlan 1
   no shut
-  ip add 10.#$34T#.1.4 255.255.255.0
+  ip add 10.31.1.4 255.255.255.0
   desc VLANMGMTDATA
  int vlan 10
   no shut
-  ip add 10.#$34T#.10.4 255.255.255.0
+  ip add 10.31.10.4 255.255.255.0
   desc VLANMGMTWIFI
  int vlan 50
   no shut
-  ip add 10.#$34T#.50.4 255.255.255.0
+  ip add 10.31.50.4 255.255.255.0
   desc VLANMGMTCCTV
  int vlan 100
   no shut
-  ip add 10.#$34T#.100.4 255.255.255.0
+  ip add 10.31.100.4 255.255.255.0
   desc VLANMGMTVOICE
  end
 
@@ -1162,10 +1162,10 @@ conf t
 conf t
  ip routing
  ip dhcp pool CAMERA6
-  host 10.#$34T#.50.6 255.255.255.0
+  host 10.31.50.6 255.255.255.0
   client-identifier #camera6macadd#
  ip dhcp pool CAMERA8
-  host 10.#$34T#.50.8 255.255.255.0
+  host 10.31.50.8 255.255.255.0
   client-identifier #camera8macadd#
  end
 ~~~
@@ -1196,7 +1196,7 @@ copy run start
 ~~~
 !@CUCM
 conf t
- hostname CUCM-#$34T#
+ hostname CUCM-31
  enable secret pass
  service password-encryption
  no logging console
@@ -1211,7 +1211,7 @@ conf t
   exec-timeout 0 0
  int fa 0/0
   no shut
-  ip add 10.#$34T#.100.8 255.255.255.0
+  ip add 10.31.100.8 255.255.255.0
  end
 ~~~
 
@@ -1234,16 +1234,16 @@ conf t
 !@CUCM
 conf t
  dial-peer voice 1 pots
-  destination-pattern #$34T#00
+  destination-pattern 3100
   port 0/0/0
  dial-peer voice 2 pots
-  destination-pattern #$34T#01
+  destination-pattern 3101
   port 0/0/1
  dial-peer voice 3 pots
-  destination-pattern #$34T#02
+  destination-pattern 3102
   port 0/0/2
  dial-peer voice 4 pots
-  destination-pattern #$34T#03
+  destination-pattern 3103
   port 0/0/3
  end
 ~~~
@@ -1255,7 +1255,7 @@ Verify Functionality:
 ~~~
 !@CUCM
 show dial-peer voice summary
-csim start #$34T#00
+csim start 3100
 ~~~
 
 &nbsp;
@@ -1304,13 +1304,13 @@ conf t
   no auto-reg-ephone
   max-ephones 5
   max-dn 20
-  ip source-address 10.#$34T#.100.8 port 2000
+  ip source-address 10.31.100.8 port 2000
   end
 ~~~
 
 <br>
 
-*Why 10.#$34T#.100.8? __TFTP__*
+*Why 10.31.100.8? __TFTP__*
 
 <br>
 
@@ -1325,23 +1325,23 @@ Ephone 2 MAC: #ephone1macadd#
 !@CUCM
 conf t
  ephone-dn 1
-  number #$34T#11
+  number 3111
  ephone-dn 2
-  number #$34T#22
+  number 3122
  ephone-dn 3
-  number #$34T#33
+  number 3133
  ephone-dn 4
-  number #$34T#44
+  number 3144
  ephone-dn 5
-  number #$34T#55
+  number 3155
  ephone-dn 6
-  number #$34T#66
+  number 3166
  ephone-dn 7
-  number #$34T#77
+  number 3177
  ephone-dn 8
-  number #$34T#88
+  number 3188
  ephone-dn 9
-  number #$34T#99
+  number 3199
  ephone 1
   mac-address #ephone1macadd#
   type 8945
@@ -1513,9 +1513,9 @@ conf t
 config t
  dial-peer voice 69 voip
   service rivanaa out-bound
-  destination-pattern #$34T#69
-  session target ipv4:10.#$34T#.100.8
-  incoming called-number #$34T#69
+  destination-pattern 3169
+  session target ipv4:10.31.100.8
+  incoming called-number 3169
   dtmf-relay h245-alphanumeric
   codec g711ulaw
   no vad
@@ -1538,13 +1538,13 @@ config t
    param max-time-vm-retry 2
    param voice-mail 1234
    param max-time-call-retry 700
-   param aa-pilot #$34T#69
+   param aa-pilot 3169
   service rivanqueue flash:app-b-acd-3.0.0.2.tcl
    param queue-len 15
-   param aa-hunt1 #$34T#00
-   param aa-hunt2 #$34T#01
-   param aa-hunt3 #$34T#22
-   param aa-hunt4 #$34T#66
+   param aa-hunt1 3100
+   param aa-hunt2 3101
+   param aa-hunt3 3122
+   param aa-hunt4 3166
    param queue-manager-debugs 1
    param number-of-hunt-grps 4
    end
@@ -1629,7 +1629,7 @@ Is the device pingable?
 
 ~~~
 @cmd
-10.#$34T#.100.8
+10.31.100.8
 ~~~
 
 <br>
@@ -1646,7 +1646,7 @@ Is the device pingable?
 ~~~
 !@CUCM
 conf t
- hostname CUCM-#$34T#
+ hostname CUCM-31
  enable secret pass
  service password-encryption
  no logging console
@@ -1661,22 +1661,22 @@ conf t
   exec-timeout 0 0
  int fa 0/0
   no shut
-  ip add 10.#$34T#.100.8 255.255.255.0
+  ip add 10.31.100.8 255.255.255.0
  end
 
 !@alog & ephone
 conf t
  dial-peer voice 1 pots
-  destination-pattern #$34T#00
+  destination-pattern 3100
   port 0/0/0
  dial-peer voice 2 pots
-  destination-pattern #$34T#01
+  destination-pattern 3101
   port 0/0/1
  dial-peer voice 3 pots
-  destination-pattern #$34T#02
+  destination-pattern 3102
   port 0/0/2
  dial-peer voice 4 pots
-  destination-pattern #$34T#03
+  destination-pattern 3103
   port 0/0/3
  end
 
@@ -1687,26 +1687,26 @@ conf t
   no auto-reg-ephone
   max-ephones 5
   max-dn 20
-  ip source-address 10.#$34T#.100.8 port 2000
+  ip source-address 10.31.100.8 port 2000
   create cnf-files
  ephone-dn 1
-  number #$34T#11
+  number 3111
  ephone-dn 2
-  number #$34T#22
+  number 3122
  ephone-dn 3
-  number #$34T#33
+  number 3133
  ephone-dn 4
-  number #$34T#44
+  number 3144
  ephone-dn 5
-  number #$34T#55
+  number 3155
  ephone-dn 6
-  number #$34T#66
+  number 3166
  ephone-dn 7
-  number #$34T#77
+  number 3177
  ephone-dn 8
-  number #$34T#88
+  number 3188
  ephone-dn 9
-  number #$34T#99
+  number 3199
  ephone 1
   mac-address #ephone1macadd#
   type 8945
@@ -1819,9 +1819,9 @@ conf t
 config t
  dial-peer voice 69 voip
   service rivanaa out-bound
-  destination-pattern #$34T#69
-  session target ipv4:10.#$34T#.100.8
-  incoming called-number #$34T#69
+  destination-pattern 3169
+  session target ipv4:10.31.100.8
+  incoming called-number 3169
   dtmf-relay h245-alphanumeric
   codec g711ulaw
   no vad
@@ -1844,13 +1844,13 @@ config t
    param max-time-vm-retry 2
    param voice-mail 1234
    param max-time-call-retry 700
-   param aa-pilot #$34T#69
+   param aa-pilot 3169
   service rivanqueue flash:app-b-acd-3.0.0.2.tcl
    param queue-len 15
-   param aa-hunt1 #$34T#00
-   param aa-hunt2 #$34T#01
-   param aa-hunt3 #$34T#22
-   param aa-hunt4 #$34T#66
+   param aa-hunt1 3100
+   param aa-hunt2 3101
+   param aa-hunt3 3122
+   param aa-hunt4 3166
    param queue-manager-debugs 1
    param number-of-hunt-grps 4
    end
@@ -1972,7 +1972,7 @@ show cdp neighbor
 ~~~
 !@EDGE
 conf t
- hostname EDGE-#$34T#
+ hostname EDGE-31
  enable secret pass
  service password-encryption
  no logging cons
@@ -1988,14 +1988,14 @@ conf t
   exec-timeout 0 0
  int gi 0/0/0
   no shut
-  ip add 10.#$34T#.#$34T#.1 255.255.255.0
+  ip add 10.31.31.1 255.255.255.0
   desc INSIDE
  int gi 0/0/1
   no shut
-  ip add 200.0.0.#$34T# 255.255.255.0
+  ip add 200.0.0.31 255.255.255.0
   desc OUTSIDE
  int loopback 0
-  ip add #$34T#.0.0.1 255.255.255.255
+  ip add 31.0.0.1 255.255.255.255
   desc VIRTUALIP
   end
 ~~~
@@ -2029,8 +2029,8 @@ conf t
  ip route 10.82.0.0 255.255.0.0 200.0.0.82 254
  ip route 10.91.0.0 255.255.0.0 200.0.0.81 254
  ip route 10.92.0.0 255.255.0.0 200.0.0.82 254
- ip route 10.#$34T#.0.0 255.255.0.0 10.#$34T#.#$34T#.4 253
- no ip route 10.#$34T#.0.0 255.255.0.0 200.0.0.#$34T# 254
+ ip route 10.31.0.0 255.255.0.0 10.31.31.4 253
+ no ip route 10.31.0.0 255.255.0.0 200.0.0.31 254
  end
 ~~~
 
@@ -2040,7 +2040,7 @@ conf t
 !@CUCM
 conf t
  ip routing
- ip route 0.0.0.0 0.0.0.0 10.#$34T#.100.4 254
+ ip route 0.0.0.0 0.0.0.0 10.31.100.4 254
  end
 ~~~
 
@@ -2049,7 +2049,7 @@ conf t
 ~~~
 !@CoreBABA
 conf t
- ip route 0.0.0.0 0.0.0.0 10.#$34T#.#$34T#.1 254
+ ip route 0.0.0.0 0.0.0.0 10.31.31.1 254
  end
 ~~~
 
@@ -2072,8 +2072,8 @@ show ip route
 
 ~~~
 !@cmd
-route add 10.0.0.0 mask 255.0.0.0 10.#$34T#.1.4
-route add 200.0.0.0 mask 255.255.255.0 10.#$34T#.1.4
+route add 10.0.0.0 mask 255.0.0.0 10.31.1.4
+route add 200.0.0.0 mask 255.255.255.0 10.31.1.4
 ~~~
 
 <br>
@@ -2089,10 +2089,10 @@ route add 200.0.0.0 mask 255.255.255.0 10.#$34T#.1.4
 !@edge
 conf t
 router ospf 1
-router-id #$34T#.0.0.1
+router-id 31.0.0.1
 network 200.0.0.0 0.0.0.255 area 0
-network 10.#$34T#.#$34T#.0 0.0.0.255 area 0
-network #$34T#.0.0.1 0.0.0.0 area 0
+network 10.31.31.0 0.0.0.255 area 0
+network 31.0.0.1 0.0.0.0 area 0
 int gi 0/0/0
 ip ospf network point-to-point
 end
@@ -2104,8 +2104,8 @@ end
 @coreBaba
 conf t
 router ospf 1
-router-id 10.#$34T#.#$34T#.4
-network 10.#$34T#.0.0 0.0.255.255 area 0
+router-id 10.31.31.4
+network 10.31.0.0 0.0.255.255 area 0
 int gi0/1
 ip ospf network point-to-point
 ~~~
@@ -2116,8 +2116,8 @@ ip ospf network point-to-point
 @cucm
 conf t
 router ospf 1
-router-id 10.#$34T#.100.8
-network 10.#$34T#.100.0 0.0.0.255 area 0
+router-id 10.31.100.8
+network 10.31.100.0 0.0.0.255 area 0
 end
 ~~~
 
@@ -2139,10 +2139,10 @@ Ping
 
 ~~~
 !@cmd
-ping 10.#$34T#.1.2                 CoreTAAS
-ping 10.#$34T#.1.4                 CoreBABA
-ping 10.#$34T#.100.8               CUCM
-ping 10.#$34T#.#$34T#.1            EDGE
+ping 10.31.1.2                 CoreTAAS
+ping 10.31.1.4                 CoreBABA
+ping 10.31.100.8               CUCM
+ping 10.31.31.1            EDGE
 ~~~
 
 <br>
