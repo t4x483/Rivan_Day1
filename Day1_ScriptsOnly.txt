@@ -36,7 +36,8 @@ Know the following commands:
 !@coreTaas
 conf t
  hostname coreTaas-#$34T#
- enable secret pass
+ enable secret pass (para encrypted ang password)
+enable password *anong password mo* (plain text, not encrypted)
  service password-encryption
  no logging console
  no ip domain-lookup
@@ -711,6 +712,7 @@ conf t
  !
  no ip route 10.#$34T#.0.0 255.255.0.0 172.16.1.#$34T# 252
  end
+
 
 
 
